@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { Date } from 'core-js'
 
 const Header = ({ siteTitle }) => (
   <div
@@ -26,6 +27,7 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
         <div
+          key={() => new Date()}
           dangerouslySetInnerHTML={{
             __html: `
               <div id="google_translate_element"></div><script type="text/javascript">
