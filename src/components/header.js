@@ -11,6 +11,21 @@ class Header extends React.Component {
     console.log('did mount')
     this.setState({ test: Math.random() })
   }
+
+  googleTranslateElementInit = () => {
+    const google = this.google
+    if (google) {
+      new google.translate.TranslateElement(
+        { pageLanguage: 'en' },
+        'google_translate_element'
+      )
+    }
+  }
+
+  getScriptSrc = () => {
+    return `//translate.google.com/translate_a/element.js?cb=${this.googleTranslateElementInit()}`
+  }
+
   render() {
     const { siteTitle } = this.props
     console.log('state', this.state.test)
@@ -39,7 +54,10 @@ class Header extends React.Component {
               {siteTitle}
             </Link>
 
-            <div
+            <div id="google_translate_element" />
+            <script type="text/javascript" src={this.getScriptSrc()} />
+
+            {/* <div
               dangerouslySetInnerHTML={{
                 __html: `
               <div id="google_translate_element"></div><script type="text/javascript">
@@ -50,7 +68,7 @@ class Header extends React.Component {
               </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
           `,
               }}
-            />
+            /> */}
           </h1>
         </div>
       </div>
