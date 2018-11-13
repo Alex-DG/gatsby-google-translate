@@ -27,7 +27,7 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
         <div
-          key={() => new Date()}
+          key={Math.random()}
           dangerouslySetInnerHTML={{
             __html: `
               <div id="google_translate_element"></div><script type="text/javascript">
