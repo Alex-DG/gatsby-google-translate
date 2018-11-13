@@ -15,6 +15,13 @@ const IndexPage = () => (
     <Link to="/page-2/">Go to page 2</Link>
     <div>
       <h1>Google translate</h1>
+      <div id="google_translate_element" />
+      <script
+        type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb={() => {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}}"
+      />
     </div>
   </Layout>
 )
