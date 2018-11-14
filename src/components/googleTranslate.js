@@ -1,25 +1,6 @@
 import React, { Component } from 'react'
 
-const mutationObserver = new MutationObserver(function(mutations) {
-  mutations.forEach(function(mutation) {
-    console.log('MUTATION > ', mutation)
-    const iframeGoogle = document.querySelector('.goog-te-banner-frame')
-    // Check if translation is in progress
-    if (iframeGoogle) {
-      console.log('iframe')
-      const innerDoc =
-        iframeGoogle.contentDocument || iframeGoogle.contentWindow.document
-      const translateCloseBtn = innerDoc.querySelector('.goog-close-link')
-
-      if (translateCloseBtn) {
-        translateCloseBtn.addEventListener('click', () => {
-          console.log('cclickk!!')
-          window.location.reload()
-        })
-      }
-    }
-  })
-})
+const mutationObserver;
 
 export default class GoogleTranslate extends Component {
   constructor() {
@@ -27,6 +8,27 @@ export default class GoogleTranslate extends Component {
     window.googleTranslateElementInit = this.googleTranslateElementInit.bind(
       this
     )
+
+    mutationObserver = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        console.log('MUTATION > ', mutation)
+        const iframeGoogle = document.querySelector('.goog-te-banner-frame')
+        // Check if translation is in progress
+        if (iframeGoogle) {
+          console.log('iframe')
+          const innerDoc =
+            iframeGoogle.contentDocument || iframeGoogle.contentWindow.document
+          const translateCloseBtn = innerDoc.querySelector('.goog-close-link')
+
+          if (translateCloseBtn) {
+            translateCloseBtn.addEventListener('click', () => {
+              console.log('cclickk!!')
+              window.location.reload()
+            })
+          }
+        }
+      })
+    })
   }
 
   componentWillUnmount() {
