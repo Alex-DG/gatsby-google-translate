@@ -12,7 +12,6 @@ export default class GoogleTranslate extends Component {
       )
     ) {
       window.google && window.googleTranslateElementInit()
-      console.log('works')
     }
 
     // const googleTranslateElementInit = () => {
@@ -33,7 +32,9 @@ export default class GoogleTranslate extends Component {
           __html: `
         <div id="google_translate_element"></div><script type="text/javascript">
 function googleTranslateElementInit() {
+  console.log('google translate is loading')
   new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+  console.log('google translate has loaded')
 }
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
