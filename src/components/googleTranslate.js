@@ -14,6 +14,8 @@ export default class GoogleTranslate extends Component {
       )
     }
     window.googleTranslateElementInit = googleTranslateElementInit
+    console.log('works')
+    window.google && googleTranslateElementInit()
   }
 
   render() {
