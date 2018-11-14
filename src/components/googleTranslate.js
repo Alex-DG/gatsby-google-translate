@@ -9,7 +9,7 @@ export default class GoogleTranslate extends Component {
     window.googleTranslateElementInit = this.googleTranslateElementInit
 
     const languageSelector = document.querySelector(
-      '#google_translate_element #:0.targetLanguage'
+      '#google_translate_element .skiptranslate'
     )
     if (window.google && !document.body.contains(languageSelector)) {
       console.log('manually loading google translate')
