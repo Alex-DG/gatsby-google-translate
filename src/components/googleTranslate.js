@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 export default class GoogleTranslate extends Component {
   constructor() {
     super()
-    window.googleTranslateElementInit = this.googleTranslateElementInit.bind(
-      this
-    )
 
     this.mutationObserver = new MutationObserver(function(mutations) {
       mutations.forEach(function(mutation) {
@@ -49,10 +46,10 @@ export default class GoogleTranslate extends Component {
     // }
 
     // window.googleTranslateElementInit = this.googleTranslateElementInit
-    // if (!window.googleTranslateElementInit)
-    //   window.googleTranslateElementInit = this.googleTranslateElementInit.bind(
-    //     this
-    //   )
+    if (!window.googleTranslateElementInit)
+      window.googleTranslateElementInit = this.googleTranslateElementInit.bind(
+        this
+      )
 
     const scriptLoaded = document.querySelector('#gtranslate-script')
     if (scriptLoaded) scriptLoaded.remove()
