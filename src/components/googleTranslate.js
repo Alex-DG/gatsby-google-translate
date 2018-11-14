@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-
-const mutationObserver;
-
 export default class GoogleTranslate extends Component {
   constructor() {
     super()
@@ -9,7 +6,7 @@ export default class GoogleTranslate extends Component {
       this
     )
 
-    mutationObserver = new MutationObserver(function(mutations) {
+    this.mutationObserver = new MutationObserver(function(mutations) {
       mutations.forEach(function(mutation) {
         console.log('MUTATION > ', mutation)
         const iframeGoogle = document.querySelector('.goog-te-banner-frame')
@@ -32,7 +29,7 @@ export default class GoogleTranslate extends Component {
   }
 
   componentWillUnmount() {
-    if (mutationObserver) mutationObserver.disconnect()
+    if (this.mutationObserver) this.mutationObserver.disconnect()
   }
 
   componentDidMount() {
@@ -71,7 +68,7 @@ export default class GoogleTranslate extends Component {
       document.getElementsByTagName('body')[0]
     ).appendChild(googleTranslateScript)
 
-    mutationObserver.observe(document.documentElement, {
+    this.mutationObserver.observe(document.documentElement, {
       attributes: true,
     })
 
