@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import GoogleTranslate from './googleTranslate'
 
 // class Header extends React.Component {
 //   // constructor() {
@@ -99,7 +100,8 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
 
-        <div
+        <GoogleTranslate />
+        {/* <div
           dangerouslySetInnerHTML={{
             __html: `
               <div id="google_translate_element"></div><script type="text/javascript">
@@ -110,7 +112,7 @@ const Header = ({ siteTitle }) => (
               </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
           `,
           }}
-        />
+        /> */}
       </h1>
     </div>
   </div>
