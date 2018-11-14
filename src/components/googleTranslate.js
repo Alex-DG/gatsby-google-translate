@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
-export default class GoogleTranslate extends Component {
-  constructor() {
-    super()
 
+export default class GoogleTranslate extends Component {
+  componentWillUnmount() {
+    if (this.mutationObserver) this.mutationObserver.disconnect()
+  }
+
+  componentDidMount() {
     this.mutationObserver = new MutationObserver(function(mutations) {
       mutations.forEach(function(mutation) {
         console.log('MUTATION > ', mutation)
@@ -23,13 +26,7 @@ export default class GoogleTranslate extends Component {
         }
       })
     })
-  }
 
-  componentWillUnmount() {
-    if (this.mutationObserver) this.mutationObserver.disconnect()
-  }
-
-  componentDidMount() {
     // const iframeGoogle = document.querySelector('.goog-te-banner-frame')
     // console.log('did mount > iframeGoogle', iframeGoogle)
     // if (iframeGoogle) {
@@ -69,15 +66,22 @@ export default class GoogleTranslate extends Component {
       attributes: true,
     })
 
-    //   attributes: true,
-    //   characterData: true,
-    //   childList: true,
-    //   subtree: true,
-    //   attributeOldValue: true,
-    //   characterDataOldValue: true,
+    // attributes: true,
+    // characterData: true,
+    // childList: true,
+    // subtree: true,
+    // attributeOldValue: true,
+    // characterDataOldValue: true,
   }
 
   googleTranslateElementInit() {
+    // new window.google.translate.TranslateElement(
+    //   {
+    //     pageLanguage: 'en',
+    //   },
+    //   'google_translate_element'
+    // )
+
     // Load script only if no translation is in progress
     if (!document.querySelector('.goog-te-banner-frame')) {
       new window.google.translate.TranslateElement(
