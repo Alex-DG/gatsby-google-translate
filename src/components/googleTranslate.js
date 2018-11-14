@@ -6,27 +6,41 @@ export default class GoogleTranslate extends Component {
     this.state = {}
   }
   componentDidMount() {
-    const googleTranslateElementInit = () => {
-      console.log('google loaded', window.google)
-      new window.google.translate.TranslateElement(
-        { pageLanguage: 'en' },
-        'google_translate_element'
-      )
-    }
-    window.googleTranslateElementInit = googleTranslateElementInit
     console.log('works')
-    window.google && googleTranslateElementInit()
+
+    window.google && window.googleTranslateElementInit()
+
+    // const googleTranslateElementInit = () => {
+    //   console.log('google loaded', window.google)
+    //   new window.google.translate.TranslateElement(
+    //     { pageLanguage: 'en' },
+    //     'google_translate_element'
+    //   )
+    // }
+    // window.googleTranslateElementInit = googleTranslateElementInit
   }
 
   render() {
     return (
-      <>
-        <div id="google_translate_element" />
-        <script
-          type="text/javascript"
-          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-        />
-      </>
+      // <>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `
+        <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+        `,
+        }}
+      />
+      // <div id="google_translate_element" />
+      // <script
+      //   type="text/javascript"
+      //   src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+      // />
+      // </>
     )
   }
 }
