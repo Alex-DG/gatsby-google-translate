@@ -6,9 +6,14 @@ export default class GoogleTranslate extends Component {
     this.state = {}
   }
   componentDidMount() {
-    console.log('works')
-
-    window.google && window.googleTranslateElementInit()
+    if (
+      document.body.contains(
+        document.querySelector('#google_translate_element')
+      )
+    ) {
+      window.google && window.googleTranslateElementInit()
+      console.log('works')
+    }
 
     // const googleTranslateElementInit = () => {
     //   console.log('google loaded', window.google)
